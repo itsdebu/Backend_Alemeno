@@ -32,19 +32,21 @@ const Loan = sequelize.define(
     },
     monthly_repayment: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: 0,
     },
     emis_paid_on_time: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: 0,
     },
     start_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     end_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
   },
   {

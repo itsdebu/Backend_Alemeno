@@ -31,7 +31,8 @@ const Customer = sequelize.define(
     },
     current_debt: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: 0,
     },
   },
   {

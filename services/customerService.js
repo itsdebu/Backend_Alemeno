@@ -5,20 +5,23 @@ const createCustomer = async (customerData) => {
   try {
     const { first_name, last_name, age, monthly_income, phoneno } =
       customerData;
+
     const approved_limit = Math.round((36 * monthly_income) / 100000) * 100000; // Rounded to nearest lakh
 
     const customer = await Customer.create({
       first_name,
       last_name,
       age,
-      monthly_income,
+      monthly_salary: monthly_income, // Ensure field names match Sequelize model
       approved_limit,
-      phoneno,
+      phone_number: phoneno, // Ensure field names match Sequelize model
     });
 
+    console.log("Customer created:", customer); // Log successful creation
     return customer;
   } catch (error) {
-    throw new Error("Failed to create customer");
+    console.error("Error creating customer:", error); // Log the error
+    throw new Error("Failed to create customer"); // Propagate the error
   }
 };
 

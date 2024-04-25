@@ -6,9 +6,11 @@ const {
 const registerCustomer = async (req, res) => {
   try {
     const customer = await createCustomer(req.body);
+    console.log(customer);
     res.status(201).json(customer);
-  } catch (error) {
-    res.status(500).json({ error: "Internal Server Error" });
+  } catch (err) {
+    console.error("Error creating customer:", err); // Log the error
+    res.status(500).json({ error: "Failed to create customer" }); // Return error response
   }
 };
 

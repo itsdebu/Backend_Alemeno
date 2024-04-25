@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const customerRoutes = require("./routes/customerRoutes");
 const loanRoutes = require("./routes/loanRoutes");
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config();
 
 const PORT = process.env.PORT || 3000;
 
