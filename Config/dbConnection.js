@@ -1,7 +1,7 @@
-require("dotenv").config();
 const { Sequelize } = require("sequelize");
+require("dotenv").config({ path: "../.env" });
 
-const connectDb = new Sequelize(
+const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
   process.env.DB_PASS,
@@ -11,7 +11,7 @@ const connectDb = new Sequelize(
   }
 );
 
-connectDb
+sequelize
   .authenticate()
   .then(() => {
     console.log("Connected to MySQL database");
@@ -20,4 +20,4 @@ connectDb
     console.error("Error connecting to MySQL database:", err);
   });
 
-module.exports = connectDb;
+module.exports = sequelize;
