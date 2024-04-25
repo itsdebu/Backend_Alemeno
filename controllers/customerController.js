@@ -1,4 +1,7 @@
-const { createCustomer } = require("../services/customerService");
+const {
+  createCustomer,
+  viewStatement,
+} = require("../services/customerService");
 
 const registerCustomer = async (req, res) => {
   try {
@@ -9,4 +12,14 @@ const registerCustomer = async (req, res) => {
   }
 };
 
-module.exports = { registerCustomer };
+const viewStatementHandler = async (req, res) => {
+  try {
+    const { customer_id, loan_id } = req.params;
+    const statement = await viewStatement(customer_id, loan_id);
+    res.status(200).json(statement);
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+module.exports = { registerCustomer, viewStatementHandler };
